@@ -151,7 +151,7 @@ export default function BookingsPage() {
                           </td>
                           <td>
                             <p className="font-medium">{customer?.name || 'Customer'}</p>
-                            <p className="text-xs text-mute">{customer?.phone}</p>
+                            <p className="text-xs text-mute">{customer?.phone || customer?.email}</p>
                           </td>
                           <td className="whitespace-nowrap">
                             {slotText(b.slot)}

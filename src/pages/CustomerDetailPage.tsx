@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { ArrowLeft, Phone } from 'lucide-react';
+import { ArrowLeft, Mail, Phone } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { useToast } from '../components/Toast';
 import { Avatar, EmptyState, ErrorBox, KeyValue, Pill, Spinner, StatusBadge, Switch, TableWrap } from '../components/ui';
@@ -49,9 +49,22 @@ export default function CustomerDetailPage() {
               <h1 className="font-display text-2xl font-bold">{c.name || 'No name yet'}</h1>
               {c.isBlocked && <Pill tone="bad">Blocked</Pill>}
             </div>
-            <a href={`tel:${c.phone}`} className="mt-0.5 inline-flex items-center gap-1 text-sm text-mute hover:text-ink">
-              <Phone className="size-3.5" aria-hidden="true" /> {c.phone}
-            </a>
+            <div className="mt-0.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-mute">
+              {c.email && (
+                <a href={`mailto:${c.email}`} className="inline-flex items-center gap-1 hover:text-ink">
+                  <Mail className="size-3.5" aria-hidden="true" /> {c.email}
+                </a>
+              )}
+              {c.phone ? (
+                <a href={`tel:${c.phone}`} className="inline-flex items-center gap-1 hover:text-ink">
+                  <Phone className="size-3.5" aria-hidden="true" /> {c.phone}
+                </a>
+              ) : (
+                <span className="inline-flex items-center gap-1">
+                  <Phone className="size-3.5" aria-hidden="true" /> No mobile number yet
+                </span>
+              )}
+            </div>
           </div>
         </div>
         <Switch checked={!c.isBlocked} label="Customer can book" text={c.isBlocked ? 'Blocked' : 'Can book'} busy={block.isPending} onChange={(allowed) => block.mutate(!allowed)} />

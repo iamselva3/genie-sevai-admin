@@ -188,9 +188,12 @@ export interface Address {
 
 export interface Customer {
   id: string;
+  /** Contact number; '' until the customer adds it after signing in with Google. */
   phone: string;
   name: string;
+  /** From the customer's Google account. */
   email: string;
+  avatarUrl?: string;
   addresses: Address[];
   isBlocked: boolean;
   lastLoginAt?: string;

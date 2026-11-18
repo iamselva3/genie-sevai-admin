@@ -255,10 +255,12 @@ export default function BookingDetailPage() {
                     <p className="text-xs text-mute">{customer.email || 'No email'}</p>
                   </div>
                 </div>
-                <a href={`tel:${customer.phone}`} className="inline-flex items-center gap-1.5 text-sm font-medium hover:underline">
-                  <Phone className="size-3.5" aria-hidden="true" />
-                  {customer.phone}
-                </a>
+                {customer.phone && (
+                  <a href={`tel:${customer.phone}`} className="inline-flex items-center gap-1.5 text-sm font-medium hover:underline">
+                    <Phone className="size-3.5" aria-hidden="true" />
+                    {customer.phone}
+                  </a>
+                )}
               </div>
             ) : (
               <p className="text-sm text-mute">Customer record not found.</p>

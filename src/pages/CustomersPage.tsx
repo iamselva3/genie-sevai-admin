@@ -28,7 +28,7 @@ export default function CustomersPage() {
     mutationFn: (v: { customer: Customer; isBlocked: boolean }) =>
       api<{ customer: Customer }>(`/admin/customers/${v.customer.id}`, { method: 'PATCH', body: { isBlocked: v.isBlocked } }).then((r) => r.customer),
     onSuccess: (c) => {
-      toast.success(c.isBlocked ? `${c.name || c.phone} is blocked` : `${c.name || c.phone} can book again`);
+      toast.success(c.isBlocked ? `${c.name || c.email} is blocked` : `${c.name || c.email} can book again`);
       setBlocking(null);
       qc.invalidateQueries({ queryKey: ['admin', 'customers'] });
       qc.invalidateQueries({ queryKey: ['admin', 'customer', c.id] });
@@ -85,14 +85,14 @@ export default function CustomersPage() {
                           </span>
                         </Link>
                       </td>
-                      <td>{c.phone}</td>
+                      <td>{c.phone || <span className="text-mute">Not added yet</span>}</td>
                       <td>{c.bookings ?? 0}</td>
                       <td className="text-right font-semibold">{inr(c.spent)}</td>
                       <td className="whitespace-nowrap">{dateText(c.createdAt)}</td>
                       <td>
                         <Switch
                           checked={!c.isBlocked}
-                          label={`${c.name || c.phone} can book`}
+                          label={`${c.name || c.email} can book`}
                           text={c.isBlocked ? 'Blocked' : 'Allowed'}
                           onChange={(allowed) => (allowed ? block.mutate({ customer: c, isBlocked: false }) : setBlocking(c))}
                         />
@@ -111,7 +111,7 @@ export default function CustomersPage() {
         title="Block this customer?"
         message={
           <>
-            <strong>{blocking?.name || blocking?.phone}</strong> will be signed out and won’t be able to book until you unblock them.
+            <strong>{blocking?.name || blocking?.email}</strong> will be signed out and won’t be able to book until you unblock them.
           </>
         }
         confirmLabel="Block"
