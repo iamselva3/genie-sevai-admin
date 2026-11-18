@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import {
   CalendarCheck,
   ClipboardList,
+  GalleryHorizontal,
   Inbox,
   Layers,
   LayoutDashboard,
@@ -48,6 +49,7 @@ const SECTIONS: { title: string; items: NavItem[] }[] = [
       { to: '/categories', label: 'Categories', icon: Tags },
       { to: '/cities', label: 'Cities', icon: MapPin },
       { to: '/coupons', label: 'Coupons', icon: Ticket },
+      { to: '/banners', label: 'Banners', icon: GalleryHorizontal },
     ],
   },
   {

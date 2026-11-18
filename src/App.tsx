@@ -16,6 +16,7 @@ const ProfessionalDetailPage = lazy(() => import('./pages/ProfessionalDetailPage
 const CustomersPage = lazy(() => import('./pages/CustomersPage'));
 const CustomerDetailPage = lazy(() => import('./pages/CustomerDetailPage'));
 const CouponsPage = lazy(() => import('./pages/CouponsPage'));
+const BannersPage = lazy(() => import('./pages/BannersPage'));
 const ReviewsPage = lazy(() => import('./pages/ReviewsPage'));
 const EnquiriesPage = lazy(() => import('./pages/EnquiriesPage'));
 const ApplicationsPage = lazy(() => import('./pages/ApplicationsPage'));
@@ -75,6 +76,7 @@ export default function App() {
         <Route path="customers" element={<Page><CustomersPage /></Page>} />
         <Route path="customers/:id" element={<Page><CustomerDetailPage /></Page>} />
         <Route path="coupons" element={<Page><CouponsPage /></Page>} />
+        <Route path="banners" element={<Page><BannersPage /></Page>} />
         <Route path="reviews" element={<Page><ReviewsPage /></Page>} />
         <Route path="enquiries" element={<Page><EnquiriesPage /></Page>} />
         <Route path="applications" element={<Page><ApplicationsPage /></Page>} />

@@ -295,3 +295,39 @@ export interface DashboardData {
   recent: Booking[];
   unassigned: Booking[];
 }
+
+export type BannerLayout = 'split' | 'image';
+export type BannerAction = 'service' | 'category' | 'coupon' | 'link' | 'none';
+export type BannerArt = '' | 'bathroom' | 'ac' | 'gift';
+export type BannerTextTone = 'dark' | 'light';
+
+export interface Banner {
+  id: string;
+  /** Headline (2–80 chars). For the `image` layout it is the picture's alt text. */
+  title: string;
+  subtitle: string;
+  /** Small label above the title. */
+  eyebrow: string;
+  ctaLabel: string;
+  /** '' | '/uploads/…' (relative to the API origin) | absolute https URL. */
+  imageUrl: string;
+  layout: BannerLayout;
+  /** '#RRGGBB' */
+  background: string;
+  textTone: BannerTextTone;
+  art: BannerArt;
+  action: BannerAction;
+  /** Service slug, category slug, coupon code, link ('/path' or 'https://…'), or '' for none. */
+  target: string;
+  /** City ids. Empty = all cities. */
+  cities: string[];
+  isActive: boolean;
+  sortOrder: number;
+  startsAt: string | null;
+  endsAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+/** Body for POST /admin/banners (and, partially, PATCH). */
+export type BannerInput = Omit<Banner, 'id' | 'createdAt' | 'updatedAt'>;

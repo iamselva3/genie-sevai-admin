@@ -27,6 +27,7 @@ Set `VITE_API_URL` (see `.env.example`) when the API is not on `http://localhost
   - Each category has a "Visible on site" switch. Cities can be turned on or off.
 - **Assign professionals (employees) to bookings.** Only eligible pros are offered: same city, trained for the category, and free at that time. Busy pros show the clashing booking. Staff can also reassign, unassign, move a booking through its statuses, reschedule and cancel.
 - **Manage the rest:** professionals, customers (block or unblock), coupons, reviews (hide), enquiries, professional applications (turn one into a professional) and staff accounts (admins only).
+- **Home page banners:** create, edit, reorder, schedule and switch off the offer banners customers see. Each banner has a colour, text, a photo (resized in the browser to WebP, at most 1600 px wide, before upload) or a built-in illustration, a target (service, category, coupon or link) and optional cities. A live preview shows the banner while you edit.
 - **Dashboard:** today's numbers, a 7-day chart, and bookings that still need a professional.
 
 Professionals see only **My jobs**. They mark "On the way", start the job with the customer's 4-digit PIN, then mark it completed.
